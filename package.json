@@ -1,0 +1,9 @@
+{
+  "name": "students-list",
+  "version": "0.0.1",
+  "description": "A full stack app with nestjs/nexjs/graphql/postgres/docker",
+  "main": "index.js",
+  "author": "Marcio Tiene <marciorft@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
