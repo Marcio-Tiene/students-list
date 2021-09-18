@@ -3,7 +3,7 @@ import { ConnectionOptions } from 'typeorm';
 import * as dotenv from 'dotenv';
 import * as fs from 'fs';
 
-const data: any = dotenv.parse(fs.readFileSync(`.env`));
+const data: any = dotenv.parse(fs.readFileSync(`../.env`));
 const config: ConnectionOptions = {
   type: 'postgres',
   url: data.DATABASE_URL,
