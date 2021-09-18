@@ -11,13 +11,6 @@ import { StudentsModule } from './modules/students/students.module';
   imports: [
     ConfigModule.forRoot({ envFilePath: ['../.env'], isGlobal: true }),
     GraphQLModule.forRoot({ autoSchemaFile: 'src/schema.gql' }),
-    // TypeOrmModule.forRootAsync({
-    //   useFactory: () => ({
-    //     ...ormconfig,
-    //     autoLoadEntities: true,
-    //     migrationsTableName: 'migrations_typeorm',
-    //   }),
-    // }),
     TypeOrmModule.forRoot({
       ...ormconfig,
       autoLoadEntities: true,
