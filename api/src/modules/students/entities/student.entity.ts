@@ -15,7 +15,7 @@ export class Student {
   id: string;
 
   @Field()
-  @Column({ length: 11, nullable: false })
+  @Column({ unique: true, length: 11, nullable: false })
   cpf: string;
 
   @Field()
@@ -23,7 +23,7 @@ export class Student {
   name: string;
 
   @Field()
-  @Column({ length: 100, nullable: false })
+  @Column({ unique: true, length: 100, nullable: false })
   email: string;
 
   @Field()
