@@ -12,26 +12,30 @@ export class StudentsService {
     private studentsRepository: Repository<Student>,
   ) {}
   async create(createStudentInput: CreateStudentInput) {
-    const createdStudent = await this.studentsRepository.save(
-      createStudentInput,
-    );
+    const student = this.studentsRepository.save(createStudentInput);
 
-    return createdStudent;
+    return student;
   }
 
   async findAll() {
     return await this.studentsRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} student`;
+  async findOne(id: string) {
+    const student = await this.studentsRepository.findOne(id);
+    return student;
   }
 
-  update(id: number, updateStudentInput: UpdateStudentInput) {
-    return `This action updates a #${id} student`;
+  async update(id: string, updateStudentInput: UpdateStudentInput) {
+    const student = await this.studentsRepository.update(
+      id,
+      updateStudentInput,
+    );
+    return student;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} student`;
+  remove(id: string) {
+    const removeResult = this.studentsRepository.delete(id);
+    return removeResult;
   }
 }

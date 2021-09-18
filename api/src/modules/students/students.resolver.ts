@@ -21,7 +21,7 @@ export class StudentsResolver {
   }
 
   @Query(() => Student, { name: 'student' })
-  findOne(@Args('id', { type: () => Int }) id: number) {
+  findOne(@Args('id', { type: () => String }) id: string) {
     return this.studentsService.findOne(id);
   }
 
@@ -36,7 +36,7 @@ export class StudentsResolver {
   }
 
   @Mutation(() => Student)
-  removeStudent(@Args('id', { type: () => Int }) id: number) {
+  removeStudent(@Args('id', { type: () => String }) id: string) {
     return this.studentsService.remove(id);
   }
 }
