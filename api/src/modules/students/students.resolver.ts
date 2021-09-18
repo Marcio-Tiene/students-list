@@ -8,11 +8,19 @@ import { UpdateStudentInput } from './dto/update-student.input';
 export class StudentsResolver {
   constructor(private readonly studentsService: StudentsService) {}
 
-  @Mutation(() => Student)
-  createStudent(
+  @Mutation(() => Student, { name: 'createStudent' })
+  async createStudent(
     @Args('createStudentInput') createStudentInput: CreateStudentInput,
   ) {
     return this.studentsService.create(createStudentInput);
+  }
+
+  @Mutation(() => [Student], { name: 'createManyStudents' })
+  async createManyStudents(
+    @Args('createStudentsInput', { type: () => [CreateStudentInput] })
+    createStudentsInput: CreateStudentInput[],
+  ) {
+    return this.studentsService.createMany(createStudentsInput);
   }
 
   @Query(() => [Student], { name: 'students' })
@@ -20,12 +28,12 @@ export class StudentsResolver {
     return this.studentsService.findAll();
   }
 
-  @Query(() => Student, { name: 'student' })
+  @Query(() => Student, { name: 'getStudentById' })
   findOne(@Args('id', { type: () => String }) id: string) {
     return this.studentsService.findOne(id);
   }
 
-  @Mutation(() => Student)
+  @Mutation(() => Student, { name: 'updateStudent' })
   updateStudent(
     @Args('updateStudentInput') updateStudentInput: UpdateStudentInput,
   ) {

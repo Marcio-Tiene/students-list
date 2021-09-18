@@ -12,7 +12,13 @@ export class StudentsService {
     private studentsRepository: Repository<Student>,
   ) {}
   async create(createStudentInput: CreateStudentInput) {
-    const student = this.studentsRepository.save(createStudentInput);
+    const student = await this.studentsRepository.save(createStudentInput);
+
+    return student;
+  }
+
+  async createMany(createStudentInput: CreateStudentInput[]) {
+    const student = await this.studentsRepository.save(createStudentInput);
 
     return student;
   }
@@ -34,8 +40,8 @@ export class StudentsService {
     return student;
   }
 
-  remove(id: string) {
-    const removeResult = this.studentsRepository.delete(id);
+  async remove(id: string) {
+    const removeResult = await this.studentsRepository.delete(id);
     return removeResult;
   }
 }

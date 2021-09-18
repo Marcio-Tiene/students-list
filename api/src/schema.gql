@@ -18,11 +18,12 @@ scalar DateTime
 
 type Query {
   students: [Student!]!
-  student(id: String!): Student!
+  getStudentById(id: String!): Student!
 }
 
 type Mutation {
   createStudent(createStudentInput: CreateStudentInput!): Student!
+  createManyStudents(createStudentsInput: [CreateStudentInput!]!): [Student!]!
   updateStudent(updateStudentInput: UpdateStudentInput!): Student!
   removeStudent(id: String!): Student!
 }
