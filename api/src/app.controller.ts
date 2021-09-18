@@ -8,9 +8,4 @@ export class AppController {
   getHellonull(@Param('name') name: string): string {
     return this.appService.getHello(name);
   }
-
-  @Get(':name')
-  getHello(@Param('name') name: string): string {
-    return this.appService.getHello(name);
-  }
 }
