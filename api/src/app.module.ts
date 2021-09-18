@@ -4,7 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 @Module({
-  imports: [GraphQLModule.forRoot({})],
+  imports: [GraphQLModule.forRoot({ autoSchemaFile: 'schema.gql' })],
   controllers: [AppController],
   providers: [AppService],
 })
