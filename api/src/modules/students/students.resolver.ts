@@ -4,6 +4,7 @@ import { Student } from './entities/student.entity';
 import { CreateStudentInput } from './dto/create-student.input';
 import { UpdateStudentInput } from './dto/update-student.input';
 import { GraphQLResolveInfo } from 'graphql';
+import { StudentFields } from '../../types/students';
 
 @Resolver(() => Student)
 export class StudentsResolver {

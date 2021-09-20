@@ -5,6 +5,7 @@ import { Repository } from 'typeorm';
 import { Student } from './entities/student.entity';
 import { StudentsResolver } from './students.resolver';
 import { StudentsService } from './students.service';
+import { CpfValidatorService } from '../../utils/cpf-validator/cpf-validator.service';
 
 describe('StudentsResolver', () => {
   let resolver: StudentsResolver;
@@ -15,6 +16,7 @@ describe('StudentsResolver', () => {
       providers: [
         StudentsResolver,
         StudentsService,
+        CpfValidatorService,
         {
           provide: getRepositoryToken(Student),
           useFactory: repositoryMockFactory,

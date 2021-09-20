@@ -5,6 +5,7 @@ import * as ormconfig from './ormconfig';
 import { ConfigModule } from '@nestjs/config';
 
 import { StudentsModule } from './modules/students/students.module';
+import { CpfValidatorService } from './utils/cpf-validator/cpf-validator.service';
 import responseCachePlugin from 'apollo-server-plugin-response-cache';
 
 @Module({
@@ -23,6 +24,6 @@ import responseCachePlugin from 'apollo-server-plugin-response-cache';
     StudentsModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [CpfValidatorService],
 })
 export class AppModule {}

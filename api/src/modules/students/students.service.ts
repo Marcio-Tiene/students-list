@@ -1,17 +1,23 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { CpfValidatorService } from '../../utils/cpf-validator/cpf-validator.service';
 import { Raw, Repository } from 'typeorm';
 import { CreateStudentInput } from './dto/create-student.input';
 import { UpdateStudentInput } from './dto/update-student.input';
 import { Student } from './entities/student.entity';
+import { StudentFields } from '../../types/students';
 
 @Injectable()
 export class StudentsService {
   constructor(
     @InjectRepository(Student)
     private studentsRepository: Repository<Student>,
+    @Inject(CpfValidatorService) private cpfValidator: CpfValidatorService,
   ) {}
   async create(createStudentInput: CreateStudentInput) {
+    if (!this.cpfValidator.isValidCPF(createStudentInput.cpf)) {
+      throw new Error('cpf invalido');
+    }
     const student = await this.studentsRepository.save(createStudentInput);
 
     return student;
