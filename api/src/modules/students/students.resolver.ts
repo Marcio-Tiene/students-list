@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { StudentsService } from './students.service';
 import { Student } from './entities/student.entity';
 import { CreateStudentInput } from './dto/create-student.input';
@@ -23,16 +23,6 @@ export class StudentsResolver {
     return this.studentsService.createMany(createStudentsInput);
   }
 
-  @Query(() => [Student], { name: 'students' })
-  findAll() {
-    return this.studentsService.findAll();
-  }
-
-  @Query(() => Student, { name: 'getStudentById' })
-  findOne(@Args('id', { type: () => String }) id: string) {
-    return this.studentsService.findOne(id);
-  }
-
   @Mutation(() => Student, { name: 'updateStudent' })
   updateStudent(
     @Args('updateStudentInput') updateStudentInput: UpdateStudentInput,
@@ -46,5 +36,19 @@ export class StudentsResolver {
   @Mutation(() => Student)
   removeStudent(@Args('id', { type: () => String }) id: string) {
     return this.studentsService.remove(id);
+  }
+
+  @Query(() => [Student], { name: 'searchStudentsFromAttribute' })
+  searchStudentsFromAttribute(
+    @Args('field', {
+      type: () => String,
+      nullable: true,
+      description: 'cpf or name or email',
+    })
+    field?: StudentFields,
+    @Args('searchTerms', { type: () => String, nullable: true })
+    searchTerms?: string,
+  ) {
+    return this.studentsService.findByAttributes(field, searchTerms);
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Raw, Repository } from 'typeorm';
 import { CreateStudentInput } from './dto/create-student.input';
 import { UpdateStudentInput } from './dto/update-student.input';
 import { Student } from './entities/student.entity';
@@ -18,18 +18,27 @@ export class StudentsService {
   }
 
   async createMany(createStudentInput: CreateStudentInput[]) {
-    const student = await this.studentsRepository.save(createStudentInput);
+    const students = await this.studentsRepository.save(createStudentInput);
 
-    return student;
+    return students;
+  }
+
+  async findByAttributes(field?: StudentFields, searchTerm?: string) {
+    if (!field || !searchTerm) {
+      return await this.findAll();
+    }
+    const students = await this.studentsRepository.find({
+      order: { name: 'ASC' },
+      where: {
+        [field]: Raw(() => `"${field}" ILIKE '%${searchTerm.toLowerCase()}%'`),
+      },
+    });
+
+    return students;
   }
 
   async findAll() {
-    return await this.studentsRepository.find();
-  }
-
-  async findOne(id: string) {
-    const student = await this.studentsRepository.findOne(id);
-    return student;
+    return await this.studentsRepository.find({ order: { name: 'ASC' } });
   }
 
   async update(id: string, updateStudentInput: UpdateStudentInput) {
