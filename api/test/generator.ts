@@ -1,3 +1,6 @@
+import faker from 'faker';
+import { Student } from 'src/modules/students/entities/student.entity';
+import uuid from 'uuid';
 const randomCpfTerm = (): string => {
   const randomTerm = Math.floor(Math.random() * 999);
   return `${randomTerm}`.padStart(3, '0');
@@ -26,3 +29,15 @@ export const generateRandoCpf = (): string => {
   const secondDigit = digits(firstTerm, secontTerm, thirdTerm, firstDigit);
   return `${firstTerm}${secontTerm}${thirdTerm}${firstDigit}${secondDigit}`;
 };
+
+const randomDate = () => new Date(Math.random() * Math.pow(10, 12));
+
+export const generateRandomDatabase = (): Student[] =>
+  new Array(6).fill(1).map(() => ({
+    id: uuid.v4(),
+    email: faker.internet.email().toLowerCase(),
+    name: faker.name.findName(),
+    cpf: generateRandoCpf(),
+    created_at: randomDate(),
+    updated_at: randomDate(),
+  }));
