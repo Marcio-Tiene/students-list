@@ -6,7 +6,7 @@ import * as fs from 'fs';
 const data: any = dotenv.parse(fs.readFileSync(`../.env`));
 const config: ConnectionOptions = {
   type: 'postgres',
-  url: data.DATABASE_URL,
+  url: data.DOCKER_NETWORK ? data.DATABASE_DOCKER_URL : data.DATABASE_URL,
   synchronize: false,
 
   migrationsRun: false,

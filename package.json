@@ -7,6 +7,6 @@
   "license": "MIT",
   "private": false,
   "scripts":{
-  "start-api":"cd api && yarn start:dev"
+  "start-api:dev":"cd api && yarn start:dev"
   }
 }
