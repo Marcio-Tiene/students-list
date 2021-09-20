@@ -1,8 +1,9 @@
-import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, Info } from '@nestjs/graphql';
 import { StudentsService } from './students.service';
 import { Student } from './entities/student.entity';
 import { CreateStudentInput } from './dto/create-student.input';
 import { UpdateStudentInput } from './dto/update-student.input';
+import { GraphQLResolveInfo } from 'graphql';
 
 @Resolver(() => Student)
 export class StudentsResolver {
@@ -15,7 +16,7 @@ export class StudentsResolver {
     return this.studentsService.create(createStudentInput);
   }
 
-  @Mutation(() => [Student], { name: 'createManyStudents' })
+  @Mutation(() => [Student])
   async createManyStudents(
     @Args('createStudentsInput', { type: () => [CreateStudentInput] })
     createStudentsInput: CreateStudentInput[],
@@ -23,7 +24,7 @@ export class StudentsResolver {
     return this.studentsService.createMany(createStudentsInput);
   }
 
-  @Mutation(() => Student, { name: 'updateStudent' })
+  @Mutation(() => Student)
   updateStudent(
     @Args('updateStudentInput') updateStudentInput: UpdateStudentInput,
   ) {
@@ -38,7 +39,7 @@ export class StudentsResolver {
     return this.studentsService.remove(id);
   }
 
-  @Query(() => [Student], { name: 'searchStudentsFromAttribute' })
+  @Query(() => [Student], { name: 'students' })
   searchStudentsFromAttribute(
     @Args('field', {
       type: () => String,
@@ -48,7 +49,9 @@ export class StudentsResolver {
     field?: StudentFields,
     @Args('searchTerms', { type: () => String, nullable: true })
     searchTerms?: string,
+    @Info() info?: GraphQLResolveInfo,
   ) {
+    info.cacheControl.setCacheHint({ maxAge: 120 });
     return this.studentsService.findByAttributes(field, searchTerms);
   }
 }
