@@ -1,4 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
+import { theme } from './theme';
+
 
 
 const GlobalStyle = createGlobalStyle`
@@ -32,6 +34,16 @@ time, mark, audio, video, main {
 	justify-content: center;
 	width: 100%;
 	min-height: 100%;
+}
+h1 {
+	font-size: 2rem;
+	font-weight: bold;
+	line-height: 1.5;
+	color: ${theme.colors.headingOnLight};
+}
+pre{
+	display: inline-block;
+	color: ${theme.colors.primary};
 }
 html {
 	background-color: #F9F9F9;	display: flex;

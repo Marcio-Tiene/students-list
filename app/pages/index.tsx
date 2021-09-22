@@ -9,6 +9,8 @@ import { useRouter } from 'next/dist/client/router'
 import SelectComboBox from '../components/SelectCombo'
 import Main from '../components/Main'
 import ProfileCards from '../components/ProfileCards'
+import Image from 'next/image'
+import studentsAppIcon from '../public/ms-icon-310x310.png'
 
 const Title = styled.h1`
   font-size: 50px;
@@ -46,7 +48,15 @@ export default function Home(props) {
         <title>Student lists</title>
       </Head>
       <Header>
-        <p>alo alo</p>
+        <Image
+          src={studentsAppIcon}
+          alt="students icon"
+          width="50px"
+          height="50px"
+        />
+        <h1>
+          Students List<pre>.</pre>
+        </h1>
         <SelectComboBox
           value={query.field}
           setValue={(value) => {
