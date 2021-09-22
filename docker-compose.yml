@@ -29,6 +29,24 @@ services:
       - .:/usr/app
       - /usr/app/node_modules
     
+  dev-app:
+    container_name: students_app
+    image: nextjs-app-dev:1.0.0
+    build:
+        context: .        
+        dockerfile: ./app/Dockerfile
+    ports:      
+      - 3000:3000
+    
+
+    environment:
+      NEXT_APP_API_ROUTE: http://students_api/graphql
+    
+    volumes:
+      - .:/usr/app
+      - /usr/app/node_modules
+
+    
 
   
      

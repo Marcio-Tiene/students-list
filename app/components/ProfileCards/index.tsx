@@ -1,4 +1,5 @@
 import React from 'react'
+import { IStudent } from '../../types'
 import {
   CardLabels,
   CardStudentsAttributes,
@@ -7,13 +8,11 @@ import {
   CradBody,
 } from './styles'
 
-interface ITable {
-  name: string
-  cpf: string
-  email: string
-}
-
-export default React.memo(function ProfileCards({ name, email, cpf }: ITable) {
+export default React.memo(function ProfileCards({
+  name,
+  email,
+  cpf,
+}: IStudent) {
   return (
     <CardTable>
       <CradBody>

@@ -8,7 +8,7 @@ import {
 } from '@reach/listbox'
 import '@reach/listbox/styles.css'
 
-import { CustomComboBox } from './styles'
+import { CustomComboBox, CustomListboxInput } from './styles'
 
 interface Iprops {
   value: string
@@ -18,7 +18,7 @@ interface Iprops {
 export default function SelectComboBox({ value, setValue }: Iprops) {
   return (
     <CustomComboBox>
-      <ListboxInput
+      <CustomListboxInput
         aria-labelledby={'zas'}
         value={value}
         onChange={(value) => setValue(value)}
@@ -31,7 +31,7 @@ export default function SelectComboBox({ value, setValue }: Iprops) {
             <ListboxOption value="email">E-mail</ListboxOption>
           </ListboxList>
         </ListboxPopover>
-      </ListboxInput>
+      </CustomListboxInput>
     </CustomComboBox>
   )
 }

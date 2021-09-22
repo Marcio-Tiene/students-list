@@ -11,15 +11,13 @@ import Main from '../components/Main'
 import ProfileCards from '../components/ProfileCards'
 import Image from 'next/image'
 import studentsAppIcon from '../public/ms-icon-310x310.png'
-
-const Title = styled.h1`
-  font-size: 50px;
-  color: ${({ theme }) => theme.colors.primary};
-`
+import { IStudent } from '../types'
+import Input from '../components/Input'
 
 export default function Home(props) {
   const { data } = props
-  const { students } = data
+  console.log(props)
+  const students: IStudent[] = data.students
 
   const router = useRouter()
 
@@ -63,7 +61,7 @@ export default function Home(props) {
             setquery((prevState) => ({ ...prevState, field: value }))
           }}
         />
-        <input
+        <Input
           type="text"
           placeholder="search"
           value={query.searchTerms}
@@ -71,14 +69,21 @@ export default function Home(props) {
         />
       </Header>
       <Main>
-        {students.map((student) => (
-          <ProfileCards
-            key={`${student.cpf}_${student.email}`}
-            cpf={student.cpf}
-            name={student.name}
-            email={student.email}
-          />
-        ))}
+        {students?.length ? (
+          students.map((student) => (
+            <ProfileCards
+              key={`${student.cpf}_${student.email}`}
+              cpf={student.cpf}
+              name={student.name}
+              email={student.email}
+            />
+          ))
+        ) : (
+          <h1>
+            Não encontramos nenhum estudante para esses termos de pesquisa
+            <pre>.</pre>
+          </h1>
+        )}
       </Main>
     </>
   )

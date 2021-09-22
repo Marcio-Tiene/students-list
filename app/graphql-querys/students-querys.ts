@@ -1,7 +1,9 @@
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
+const uri = process.env.NEXT_APP_API_ROUTE || "http://localhost:4000/graphql/"
+
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql/',
+  uri,
   cache: new InMemoryCache()
 });
 

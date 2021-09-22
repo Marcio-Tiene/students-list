@@ -10,8 +10,9 @@ const Header = styled.header`
 
   top: 0;
 
-  background-color: rgba(255, 255, 255, 0.13);
-  backdrop-filter: blur(40px);
+  background-color: ${(p) => p.theme.colors.primaryLight};
+
+  backdrop-filter: opacity(90%) blur(40px);
 
   width: 100%;
   min-height: fit-content;
