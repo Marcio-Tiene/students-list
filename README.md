@@ -32,10 +32,39 @@ It's a full stack nestjs/nextjs/graphql/postgress/docker app
 6. To rebuild image for any new depenecy you inject run
 ```bash
   #start container
-  docker-compose up 
+  docker-compose up --build
   ```  
+### The app will e running on [http://localhost:3000](http://localhost:3000) and graphql playground will be running on [http://localhost:4000/graphql](http://localhost:4000/graphql)
 
+## To run migrations 
+  With the docker running: 
+  1. Go to api folder 
+```bash
+ cd ./api
+  ```  
+2. Install dependencies
+```bash
+  yarn or npm -i
+  ```    
+3. Run 
+```bash
+ yarn migration:run or npm run migration:run 
+  ```  
+## To seed some fake data to database 
+  With the docker running: 
 
+1. Go to api folder 
+```bash
+ cd ./api
+  ```  
+2. Install dependencies
+```bash
+  yarn or npm -i
+  ```    
+3. Run follow script to  insert 100 random students on db
+```bash
+  yarn run:command seed:students or npm run run:command seed:students
+  ```    
 
 ## Support
 
