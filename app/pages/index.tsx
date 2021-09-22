@@ -6,6 +6,7 @@ import { fetchStudentsByAttributes } from '../graphql-querys/students-querys'
 import { useEffect, useState } from 'react'
 import Header from '../components/Header'
 import { useRouter } from 'next/dist/client/router'
+import SelectComboBox from '../components/SelectCombo'
 
 const Title = styled.h1`
   font-size: 50px;
@@ -50,6 +51,12 @@ export default function Home(props) {
           placeholder="search"
           value={query.searchTerms}
           onChange={handleTermsChange}
+        />
+        <SelectComboBox
+          value={query.field}
+          setValue={(value) => {
+            setquery((prevState) => ({ ...prevState, field: value }))
+          }}
         />
       </Header>
       <Title>{props.data.students.map((student) => student.name)}</Title>

@@ -334,25 +334,33 @@
     "@reach/utils" "0.16.0"
     tslib "^2.3.0"
 
-"@reach/combobox@^0.16.1":
-  version "0.16.1"
-  resolved "https://registry.yarnpkg.com/@reach/combobox/-/combobox-0.16.1.tgz#5ab90db398fc30cc44fc83f6ab2dc18376884941"
-  integrity sha512-48eUtftpe2wY9sKJddkUSZQu9OcEx3P1LdsOKj6BL+InAX4DRe6i8tBKSqhChz4QaaHCo6bPXr2eeE1f++OBAw==
-  dependencies:
-    "@reach/auto-id" "0.16.0"
-    "@reach/descendants" "0.16.1"
-    "@reach/popover" "0.16.0"
-    "@reach/portal" "0.16.0"
-    "@reach/utils" "0.16.0"
-    prop-types "^15.7.2"
-    tslib "^2.3.0"
-
 "@reach/descendants@0.16.1":
   version "0.16.1"
   resolved "https://registry.yarnpkg.com/@reach/descendants/-/descendants-0.16.1.tgz#fa3d89c0503565369707f32985d87eef61985d9f"
   integrity sha512-3WZgRnD9O4EORKE31rrduJDiPFNMOjUkATx0zl192ZxMq3qITe4tUj70pS5IbJl/+v9zk78JwyQLvA1pL7XAPA==
   dependencies:
     "@reach/utils" "0.16.0"
+    tslib "^2.3.0"
+
+"@reach/listbox@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.yarnpkg.com/@reach/listbox/-/listbox-0.16.1.tgz#8a4a13cf171e9ba3118d2e6e72f3e7f17f4c2f80"
+  integrity sha512-2KQTYmxKvZW0XdBWGoV7E2gUWWBINJmfj2MDRmWbRNdTjsF9w3mTb09buTWQ2sznzF7DrLrwiBFv4b2egMfKOw==
+  dependencies:
+    "@reach/auto-id" "0.16.0"
+    "@reach/descendants" "0.16.1"
+    "@reach/machine" "0.16.0"
+    "@reach/popover" "0.16.0"
+    "@reach/utils" "0.16.0"
+    prop-types "^15.7.2"
+
+"@reach/machine@0.16.0":
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/@reach/machine/-/machine-0.16.0.tgz#0504ba47ac09ed495bd341bf5fdd6625bcade0e3"
+  integrity sha512-c8SRQz2xGtg5M9aXuuM5pFgaV1ZW5/nyMIYpZzBwHUlNFKGO+VBhwedbnqUxO0yLcbgl3wPvjPh740O3YjqiHg==
+  dependencies:
+    "@reach/utils" "0.16.0"
+    "@xstate/fsm" "1.4.0"
     tslib "^2.3.0"
 
 "@reach/observe-rect@1.2.0":
@@ -528,6 +536,11 @@
   integrity sha512-WwB53ikYudh9pIorgxrkHKrQZcCqNM/Q/bDzZBffEaGUKGuHrRb3zZUT9Sh2qw9yogC7SsdRmQ1ER0pqvd3bfw==
   dependencies:
     tslib "^2.3.0"
+
+"@xstate/fsm@1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@xstate/fsm/-/fsm-1.4.0.tgz#6fd082336fde4d026e9e448576189ee5265fa51a"
+  integrity sha512-uTHDeu2xI5E1IFwf37JFQM31RrH7mY7877RqPBS4ZqSNUwoLDuct8AhBWaXGnVizBAYyimVwgCyGa9z/NiRhXA==
 
 acorn-jsx@^5.3.1:
   version "5.3.2"
