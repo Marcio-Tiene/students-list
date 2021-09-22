@@ -26,7 +26,7 @@ border-radius: 8px;
 
 margin-bottom: 1.5ch;
 
- }
+ 
  &>tr:first-child{
    border-radius: 8px 8px 0 0;
    background-color: ${p => p.theme.colors.primary};
@@ -38,14 +38,13 @@ margin-bottom: 1.5ch;
    color: ${p => p.theme.colors.headingOnLight};
    margin-bottom: 0;
    ${CardLabels} {
-   border-right: 1px solid ${p => p.theme.colors.headingOnLight}
+   border-right: 1px solid ${p => p.theme.colors.headingOnLight};
  }
  }
 
- ${CardLabels} {
-   border-right: 1px solid ${p => p.theme.colors.textOnLight}
+ &>tr > ${CardLabels}{
+   border-right: 1px solid ${p => p.theme.colors.textOnLight};
  }
-
 `
 
 

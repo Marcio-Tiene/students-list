@@ -16,7 +16,6 @@ const Title = styled.h1`
 `
 
 export default function Home(props) {
-  console.log(props)
   const { data } = props
   const { students } = data
 

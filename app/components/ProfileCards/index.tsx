@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   CardLabels,
   CardStudentsAttributes,
@@ -12,7 +13,7 @@ interface ITable {
   email: string
 }
 
-export default function ProfileCards({ name, email, cpf }: ITable) {
+export default React.memo(function ProfileCards({ name, email, cpf }: ITable) {
   return (
     <CardTable>
       <CradBody>
@@ -31,4 +32,4 @@ export default function ProfileCards({ name, email, cpf }: ITable) {
       </CradBody>
     </CardTable>
   )
-}
+})
