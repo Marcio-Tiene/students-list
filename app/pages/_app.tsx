@@ -5,7 +5,10 @@ import GlobalStyle from '../GlobalStyle'
 
 const theme = {
   colors: {
-    primary: '#0070f3',
+    primary: '#054BBA',
+    primaryLight: '#1B5CC4',
+    headingOnLight: '#000000',
+    textOnLight: '#F9F9F9',
   },
 }
 
