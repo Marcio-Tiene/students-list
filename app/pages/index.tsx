@@ -16,7 +16,7 @@ import Input from '../components/Input'
 
 export default function Home(props) {
   const { data } = props
-  console.log(props)
+  
   const students: IStudent[] = data.students
 
   const router = useRouter()

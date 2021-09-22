@@ -20,7 +20,7 @@ It's a full stack nestjs/nextjs/graphql/postgress/docker app
 
   ```bash
   #start container
-  docker-compose up --force-recreate -d
+  docker-compose up 
   ```
 
 5. To stop the container.
@@ -29,6 +29,11 @@ It's a full stack nestjs/nextjs/graphql/postgress/docker app
   #stop container
   docker-compose down
   ```
+6. To rebuild image for any new depenecy you inject run
+```bash
+  #start container
+  docker-compose up 
+  ```  
 
 
 
