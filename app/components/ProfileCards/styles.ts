@@ -11,7 +11,7 @@ max-width: 100%;
 `
 
 
-export const CardLabels = styled.td`
+export const CardLabels = styled.th`
 width:7ch;
 padding:0.8ch;
 `
@@ -25,11 +25,6 @@ box-shadow: 5px 5px 15px 5px #000000;
 border-radius: 8px;
 
 margin-bottom: 1.5ch;
-
-
- &> tr:nth-child(odd){
-background-color: red;
-
 
  }
  &>tr:first-child{
