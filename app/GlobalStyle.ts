@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
+
 const GlobalStyle = createGlobalStyle`
 
  html, body, div, span, applet, object, iframe,
@@ -14,7 +15,7 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+time, mark, audio, video, main {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -24,10 +25,25 @@ time, mark, audio, video {
 	vertical-align: baseline;
 	box-sizing: border-box;
 }
-
-html {
-	background-color: #F9F9F9;
+#__next{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	min-height: 100%;
 }
+html {
+	background-color: #F9F9F9;	display: flex;
+	min-height: 100%;
+	
+
+}
+body{
+	min-width: 100%;
+	min-height: 100%;
+}
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
@@ -50,6 +66,21 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+body::-webkit-scrollbar {
+  width: 5px;
+	height: 5px;
+}
+ 
+body::-webkit-scrollbar-track {
+	border-radius: 100px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+body::-webkit-scrollbar-thumb {
+	border-radius: 100px;
+  background-color: #054BBA;
+  
 }
 `;
 

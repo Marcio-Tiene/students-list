@@ -7,6 +7,8 @@ import { useEffect, useState } from 'react'
 import Header from '../components/Header'
 import { useRouter } from 'next/dist/client/router'
 import SelectComboBox from '../components/SelectCombo'
+import Main from '../components/Main'
+import ProfileCards from '../components/ProfileCards'
 
 const Title = styled.h1`
   font-size: 50px;
@@ -14,16 +16,15 @@ const Title = styled.h1`
 `
 
 export default function Home(props) {
-  const { data, error, loading, networkStatus } = props
+  console.log(props)
+  const { data } = props
+  const { students } = data
 
   const router = useRouter()
-  const { query: queryparams } = router
-
-  const { field, searchTerms } = queryparams
 
   const [query, setquery] = useState({
     field: 'name',
-    searchTerms: searchTerms || '',
+    searchTerms: '',
   })
 
   const handleTermsChange = (event) => {
@@ -46,21 +47,30 @@ export default function Home(props) {
         <title>Student lists</title>
       </Head>
       <Header>
-        <input
-          type="text"
-          placeholder="search"
-          value={query.searchTerms}
-          onChange={handleTermsChange}
-        />
+        <p>alo alo</p>
         <SelectComboBox
           value={query.field}
           setValue={(value) => {
             setquery((prevState) => ({ ...prevState, field: value }))
           }}
         />
+        <input
+          type="text"
+          placeholder="search"
+          value={query.searchTerms}
+          onChange={handleTermsChange}
+        />
       </Header>
-      <Title>{props.data.students.map((student) => student.name)}</Title>
-      <button>zas</button>
+      <Main>
+        {students.map((student) => (
+          <ProfileCards
+            key={`${student.cpf}_${student.email}`}
+            cpf={student.cpf}
+            name={student.name}
+            email={student.email}
+          />
+        ))}
+      </Main>
     </>
   )
 }
